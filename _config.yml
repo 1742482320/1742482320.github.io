@@ -1,0 +1,19 @@
+# Basic
+title: 海东
+subtitle: 个人站
+baseurl: ""
+description: 欢迎来到我的个人站
+
+# 头像里面的标题
+avatarTitle: haidong
+# 头像里面的描述
+avatarDesc: 学习笔记
+
+social:
+    github: 1742482320
+    email: 1742482320@qq.com
+
+# 分页
+gems: [jekyll-paginate,jekyll-sitemap]
+paginate: 10
+paginate_path: "page/:num/"
