@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>coinFlip</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <!-- <div class="points">积分：<span id="integral">10</span></div> -->
+  <div id="wrapper">
+    <div id="coin" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+      <div class="back"></div>
+      <div class="front"></div>
+    </div>
+  </div>
+  <button class="throw" onclick="flip()">抛一次</button>
+  <!-- <button class="throw back-throw"onclick="flip('back')">押反</button>
+  <button class="throw front-throw"onclick="flip('front')">押正</button> -->
+  <script src="./TweenMax.min.js"></script>
+  <script>
+    var coin = document.getElementById('coin');
+    var flipping = false;
+    var angle = 0;
+
+    function updateAngle(delta) {
+      angle += delta;
+
+      return angle;
+    }
+
+    function flip(bet) {
+      if (flipping) return;
+
+      flipping = true;
+
+      new TimelineLite({
+        onComplete: function () {
+            flipping = false;
+          }
+        })
+        .to(coin, 1.5, {
+          ease: Power2.easeOut,
+          z: 150,
+          rotationX: updateAngle(360 * (Math.random() < 0.5 ? 5 : 5.5))
+        })
+        .to(coin, 0, {
+          z: 0,
+        })
+        .play();
+    };
+  </script>
+</body>
+
+</html>
